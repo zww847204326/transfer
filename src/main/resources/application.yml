@@ -1,0 +1,21 @@
+
+
+server:
+  port: 80
+
+spring:
+  application:
+    name: czbank
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/czbank?useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+
+mybatis:
+  type-aliases-package: czbank.jiangjian.entity
+  mapper-locations: classpath*:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+

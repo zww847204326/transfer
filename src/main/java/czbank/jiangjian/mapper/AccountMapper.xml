@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="czbank.jiangjian.mapper.AccountMapper">
+
+    <select id="getAccountInf" parameterType="String"
+            resultType="czbank.jiangjian.entity.Account">
+        select
+            id,
+            id_card,
+            card_num,
+            money,
+            bank_name,
+            name,
+            account_type,
+            state,
+            pay_password,
+            last_opt_time,
+            max
+        from account
+        where card_num= #{cardNum}
+    </select>
+
+    <select id="getMoney" parameterType="HashMap"
+            resultType="Integer">
+        select
+            money
+        from account
+        where id_card= #{idCard} and card_num = #{cardNum}
+    </select>
+
+    <update id="increaseMoney" parameterType="HashMap" >
+        update
+            account
+        set
+            money = money + #{delta}
+         where
+            card_num = #{cardNum} AND name = #{name}
+    </update>
+
+    <update id="decreaseMoney" parameterType="HashMap" >
+        update
+            account
+        set
+            money = money - #{delta}
+         where
+            card_num = #{cardNum} AND name = #{name}
+    </update>
+
+
+    <select id="queryCards" parameterType="String"
+            resultType="Integer">
+        SELECT card_num
+        from account
+            where id_card =#{idCard}
+    </select>
+
+
+
+</mapper>

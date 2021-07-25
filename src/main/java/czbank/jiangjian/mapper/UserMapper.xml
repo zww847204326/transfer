@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!--  czbank.jiangjian.entity-->
+
+<mapper namespace="czbank.jiangjian.mapper.UserMapper">
+
+    <select id="loginByTelephone" parameterType="String"
+     resultType="czbank.jiangjian.entity.User">
+        select
+                id,
+                name,
+                id_card,
+                age,
+                address,
+                sex,
+                telephone,
+                password,
+                state
+        from User
+        where telephone = #{telephone}
+    </select>
+
+    <select id="loginByIdCard" parameterType="String"
+            resultType="czbank.jiangjian.entity.User">
+        select
+                id,
+                name,
+                id_card,
+                age,
+                address,
+                sex,
+                telephone,
+                password,
+                state
+        from User
+        where id_card = #{idCard}
+    </select>
+
+
+
+</mapper>
